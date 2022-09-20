@@ -13,7 +13,8 @@
                         <div class="col-lg-12">
                             <div class="p-5">
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-5">Apuesta Total [Prev. Fraude]</h1>
+                                    <img src="{{asset('img/logo.png')}}" width="100px">
+                                    <h1 class="h4 text-gray-900 mb-4">Apuesta Total [Prev. Fraude]</h1>
                                 </div>
                                 <form method="POST" action="{{ route('login') }}">
                                     @csrf
