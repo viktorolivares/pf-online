@@ -1,8 +1,15 @@
 jQuery(function ($) {
+
+    $("#card-form").hide();
+
     $("#btn-dni").on("click", function (e) {
+
         e.preventDefault();
+
         resetForm();
+
         $("#alert").hide();
+        $("#card-form").hide();
 
         var dni = $("#dni").val();
         var btn = $(this);
@@ -24,27 +31,23 @@ jQuery(function ($) {
 
                     if (data.error == 404) {
                         $.notify("No se encontró coincidencias", "info");
+
                     } else {
+
                         if (data.oefa.original.esValido != "true") {
+
                             $.notify(data.oefa.original.mensaje, "error");
-                            $("#name").val(
-                                data.sunat.original.error
-                                    ? ""
-                                    : data.sunat.original.nombreSoli
-                            );
-                            $("#lastname1").val(
-                                data.sunat.original.error
-                                    ? ""
-                                    : data.sunat.original.apePatSoli
-                            );
-                            $("#lastname2").val(
-                                data.sunat.original.error
-                                    ? ""
-                                    : data.sunat.original.apeMatSoli
-                            );
-                            $("#code").val(
-                                data.sunat.original.error ? "" : data.codigoV
-                            );
+
+                            $("#name").val(data.sunat.original.error ? "": data.sunat.original.nombreSoli);
+                            $("#lastname1").val(data.sunat.original.error ? "" : data.sunat.original.apePatSoli);
+                            $("#lastname2").val(data.sunat.original.error ? "" : data.sunat.original.apeMatSoli);
+                            $("#code").val(data.sunat.original.error ? "" : data.codigoV);
+                            $("#address").val("-");
+                            $("#ubigeo").val("-");
+                            $("#sex").val("-");
+                            $("#status").val("-");
+                            $("#age").val("-");
+
                         } else {
                             if (data.oefa.original.fechaNacimiento != null) {
                                 var birthday =
@@ -118,6 +121,7 @@ jQuery(function ($) {
                     }
 
                     $("div.loading").hide();
+                    $("#card-form").show();
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                     $.notify("Status: Error en servidor externo", "error");
@@ -176,18 +180,6 @@ jQuery(function ($) {
     }
 
     function resetForm() {
-        $("#name").val("");
-        $("#lastname1").val("");
-        $("#lastname2").val("");
-        $("#code").val("");
-        $("#address").val("");
-        $("#date").val("");
-        $("#age").val("");
-        $("#status").val("");
-        $("#sex").val("");
-        $("#ubigeo").val("");
-        $("#department").val("");
-        $("#province").val("");
-        $("#district").val("");
+        $('#form-result').trigger("reset");
     }
 });

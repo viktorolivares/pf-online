@@ -20,6 +20,7 @@ jQuery(function ($) {
 
         var dni = $("#dni").val().split(/\n/);
         var btn = $(this);
+
         btn.prop("disabled", true);
 
         setTimeout(function () {
@@ -35,7 +36,7 @@ jQuery(function ($) {
 
                     $.ajax({
                         type: "GET",
-                        url: "/dni/" + dni[i],
+                        url: "/dnimultiple/" + dni[i],
                         data: {},
 
                         beforeSend: function () {
@@ -43,6 +44,9 @@ jQuery(function ($) {
                         },
 
                         success: function (data) {
+
+                            console.log(data);
+
                             progressed = Math.floor((++j / dni.length) * 100);
 
                             $("#progress").show();
@@ -140,9 +144,14 @@ jQuery(function ($) {
                                     "error"
                                 );
                             }
+
+                            location.reload();
                         },
                     }).fail(function (xhr, textStatus, errorThrown) {
-                        alert(xhr.responseText);
+                        $.notify(
+                            "Uncaught Error: " + xhr.responseText,
+                            "error"
+                        );
                     });
                 }
             } else {

@@ -31,6 +31,7 @@ class DniController extends Controller
 
     public function getDni($dni)
     {
+
         $sunat = Sunat::search($dni);
         $oefa = Oefa::search($dni);
         $jne = Jne::search($dni);
@@ -44,6 +45,24 @@ class DniController extends Controller
             'dni' => $dni
         ]);
     }
+
+
+    public function getDniMultiple($dni)
+    {
+
+        $sunat = Sunat::search($dni);
+        $jne = Jne::search($dni);
+        $verifyCode = $this->getVerifyCode($dni);
+
+        return response()->json([
+            'codigoV' => $verifyCode,
+            'sunat' => $sunat,
+            'jne' => $jne,
+            'dni' => $dni
+        ]);
+    }
+
+
 
     private function getVerifyCode($dni)
     {

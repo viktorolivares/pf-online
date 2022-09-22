@@ -5,9 +5,9 @@
     <div class="col-md-3">
         <div class="card">
             <div class="card-body">
+                <div class="card-title text-primary">Número de RUC:</div>
                 <form method="GET" id="form-ruc">
                     <div class="form-group">
-                        <label for="ruc" class="mb-2">N° de RUC</label>
                         <input type="text" class="form-control" maxlength="11" id="ruc">
                     </div>
                     <div class="form-group">
@@ -20,20 +20,12 @@
     </div>
     <div class="col-md-9" id="card-form">
         <div class="card">
-            <div class="card-body mt-3">
-                <form>
+            <div class="card-body pt-4">
+                <form id="form-result">
                     <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="razon-social">Razon Social</label>
-                            <input type="text" class="form-control" id="razon-social" readonly>
-                        </div>
                         <div class="form-group col-md-6">
                             <label for="nombre-comercial">Nombre Comercial</label>
                             <input type="text" class="form-control" id="nombre-comercial" readonly>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="act-economica">Act. Económica</label>
-                            <input type="text" class="form-control" id="act-economica" readonly>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="direccion">Dirección</label>
@@ -41,23 +33,19 @@
                         </div>
                     </div>
                     <div class="form-row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-12">
                             <label for="ubigeo">Ubigeo</label>
                             <input type="text" class="form-control" id="ubigeo" readonly>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="tipo">Tipo</label>
-                            <input type="text" class="form-control" id="tipo" readonly>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="estado">Estado</label>
-                            <input type="text" class="form-control" id="estado" readonly>
+                            <span id="msg-span" class="bg-secondary estado">-</span>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="condicion">Condición</label>
-                            <input type="text" class="form-control" id="condicion" readonly>
+                            <span id="msg-span" class="bg-secondary condicion">-</span>
                         </div>
                     </div>
                 </form>

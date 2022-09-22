@@ -5,11 +5,11 @@
     <div class="col-md-4">
         <div class="card">
             <div class="card-body">
-                <h5 class="pb-4 text-primary">Máximo 200 Consultas</h5>
+                <div class="card-title text-primary">Máximo 200 Consultas</div>
                 <form method="GET" id="form-dni">
                     <div class="form-group">
                         <label for="exampleFormControlInput1">N° de DNI</label>
-                        <textarea class="form-control" id="dni" rows="15"></textarea>
+                        <textarea class="form-control" id="dni" rows="12"></textarea>
                     </div>
                     <div class="form-group">
                         <button class="btn btn-primary btn-block" type="submit" id="btn-dni">Apply</button>
@@ -71,7 +71,7 @@
 
 @push('scripts')
 
-<script src="js/jquery.table2excel.min.js"></script>
+<script src="{{ asset('js/jquery.table2excel.min.js')}}"></script>
 <script src="{{ asset('js/scripts/age.js')}}"></script>
 
 @endpush

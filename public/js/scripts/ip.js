@@ -2,13 +2,15 @@ jQuery(function ($) {
     $("#table-ip").hide();
     $("#progress").hide();
     $("#btn-excel").hide();
+    $("#view-maps").hide();
 
     $("#btn-ip").on("click", function (e) {
         e.preventDefault();
 
-        $("#table-ip").hide();
         $("#progress").hide();
         $("#btn-excel").hide();
+        $("#table-ip").hide();
+        $("#view-maps").hide();
 
         $(".progress-bar")
             .css("width", 0 + "%")
@@ -17,8 +19,8 @@ jQuery(function ($) {
 
         $("#msg-span").removeClass("success-bg").addClass("primary-bg");
 
+        $("#body").empty();
         const ip = $("#ip").val().split(/\n/);
-        const body = $("#body").empty();
         const btn = $(this);
 
         btn.prop("disabled", true);
@@ -30,8 +32,8 @@ jQuery(function ($) {
         const ip_all = document.getElementById("ip").value;
 
         if (ip_all) {
-            if (ip.length <= 50) {
-                for (var i = 0, j = 0; i < ip.length; i++) {
+            if (ip.length <= 20) {
+                for (var i = 0, j = 0, k = 0; i < ip.length; i++) {
                     $("#msg-span").text("Consultando...");
 
                     $.ajax({
@@ -74,36 +76,76 @@ jQuery(function ($) {
                                     (table += "<td>" + "-" + "</td>"),
                                     (table += "<td>" + "-" + "</td>"),
                                     (table += "<td>" + "-" + "</td>"),
+                                    (table += "<td>" + "-" + "</td>"),
                                     (table += "</tr>");
                                 table += "</tr>";
 
                                 $("#body").append(table);
                             } else {
+                                response = data.data.original.country;
+
+                                var country = $.getJSON(
+                                    "js/flag.json",
+                                    function (data) {
+                                        console.log("success");
+                                        var image;
+                                        $.each(data, function (key, val) {
+                                            if (val.code == response) {
+                                                image = val.image;
+                                                console.log(image);
+                                                return false;
+                                            }
+                                        });
+                                    }
+                                ).done(function () {
+                                    console.log("second success");
+                                });
+
+                                console.log(country);
+
                                 (table += "<tr>"),
                                     (table += "<td>" + data.ip + "</td>"),
                                     (table +=
-                                        "<td>" +
-                                        data.data.original.country_name +
+                                        '<td id="c' +
+                                        k++ +
+                                        '">' +
+                                        country +
                                         "</td>"),
                                     (table +=
                                         "<td>" +
                                         data.data.original.region +
-                                        "</td>"),
-                                    (table +=
-                                        "<td>" +
+                                        "/" +
                                         data.data.original.city +
                                         "</td>"),
                                     (table +=
                                         "<td>" +
+                                        '<a type="button" class="btn btn-link btn-sm view-map" data-lat="' +
                                         data.data.original.latitude +
-                                        " | " +
+                                        '" data-long="' +
                                         data.data.original.longitude +
+                                        '" data-city="' +
+                                        data.data.original.city +
+                                        '">' +
+                                        "VER MAPA" +
+                                        "</a>" +
                                         "</td>"),
                                     (table +=
                                         "<td>" +
+                                        data.data1.original.region_name +
+                                        "/" +
+                                        data.data1.original.city_name +
+                                        "</td>"),
+                                    (table +=
+                                        "<td>" +
+                                        '<a type="button" class="btn btn-link btn-sm view-map" data-lat="' +
                                         data.data1.original.latitude +
-                                        " | " +
+                                        '" data-long="' +
                                         data.data1.original.longitude +
+                                        '" data-city="' +
+                                        data.data1.original.city_name +
+                                        '">' +
+                                        "VER MAPA" +
+                                        "</a>" +
                                         "</td>"),
                                     (table +=
                                         "<td>" +
@@ -127,11 +169,9 @@ jQuery(function ($) {
                                     .addClass("success-bg");
 
                                 $("#btn-excel").show();
-
                                 $("#table-ip").show();
                             }
                         },
-
                         error: function (jqXHR, textStatus, errorThrown) {
                             if (jqXHR.status === 0) {
                                 $.notify(
@@ -163,13 +203,18 @@ jQuery(function ($) {
                                     "error"
                                 );
                             }
+
+                            location.reload();
                         },
                     }).fail(function (xhr, textStatus, errorThrown) {
-                        alert(xhr.responseText);
+                        $.notify(
+                            "Uncaught Error: " + xhr.responseText,
+                            "error"
+                        );
                     });
                 }
             } else {
-                $.notify("Máximo 50 consultas", "error");
+                $.notify("Máximo 20 consultas", "error");
             }
         } else {
             $.notify("Ingrese un Registro", "error");
@@ -179,9 +224,71 @@ jQuery(function ($) {
     $("#btn-excel").click(function (e) {
         $("#table-ip").table2excel({
             filename: "ip-" + excel_name + ".xls",
-            preserveColors: false,
+            preserveColors: true,
         });
     });
 
     var excel_name = new Date().getTime();
+
+    $(document).on("click", ".view-map", function (e) {
+        e.preventDefault();
+
+        var lat = $(this).data("lat");
+        var long = $(this).data("long");
+        var city = $(this).data("city");
+
+        console.log(lat, long, city);
+
+        viewMap(lat, long, city);
+    });
+
+    function viewMap(latitude, longitude, city) {
+        $("#view-maps").html("<div id='map'></div>");
+
+        var map = L.map("map").setView([latitude, longitude], 14);
+
+        setTimeout(function () {
+            map.invalidateSize();
+        }, 100);
+
+        L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            maxZoom: 18,
+            minZoom: 0,
+            attribution: "© OpenStreetMap",
+        }).addTo(map);
+
+        var marker = L.marker([latitude, longitude]);
+
+        marker
+            .addTo(map)
+            .bindPopup(city + "<br>" + latitude + ", " + longitude)
+            .openPopup();
+
+        $("#view-maps").show();
+    }
+
+    function getFlag(code, id) {
+        var image;
+
+        console.log(code, id);
+
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: "js/flag.json",
+            success: function (data) {
+                $.each(data, function (i, v) {
+                    if (v.code == code) {
+                        image = v.image;
+
+                        $("#c" + id).html(
+                            '<img src="' + image + '" width="20">'
+                        );
+
+                        return false;
+                    }
+                });
+            },
+        });
+    }
 });

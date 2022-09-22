@@ -1,4 +1,4 @@
-hr .divider{
+hr .divider {
     border: 0;
     height: 1px;
     background-image: linear-gradient(to right, #00000000, #000000bf, #00000000);
@@ -51,7 +51,7 @@ hr .divider{
 
 #msg-span {
     display: block;
-    padding: 5px 15px;
+    padding: 10px 15px;
     color: whitesmoke;
     border-radius: 5px;
     width: 100%;
@@ -60,21 +60,35 @@ hr .divider{
 }
 
 .primary-bg {
-    background: #1e86b7;
+    border: 1px solid #b6d4fe;
+    background: #cfe2ff;
+    color: #084298 !important;
 }
 
 .error-bg {
-    background: #cd5454;
+    border: 1px solid #e69d9d;
+    background: #f8d7da;
+    color: #61030c !important;
 }
 
 .warning-bg {
-    background: #e6ff45;
+    border: 1px solid #ffecb5;
+    background: #fff3cd;
+    color: #664d03 !important;
 }
 
 .success-bg {
-    background: #42c282;
+    border: 1px solid #badbcc;
+    background: #d1e7dd;
+    color: #0f5132 !important;
 }
 
 .table {
     font-size: 12px !important;
+}
+
+
+#map {
+    height: 350px;
+    width: 100%;
 }

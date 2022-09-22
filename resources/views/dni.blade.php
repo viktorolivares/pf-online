@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="row">
     <div class="col-md-3">
         <div class="card">
@@ -21,7 +22,7 @@
     <div class="col-md-9" id="card-form">
         <div class="card">
             <div class="card-body pt-4">
-                <form>
+                <form id="form-result">
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="name">Nombre</label>

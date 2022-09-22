@@ -32,6 +32,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/services', [DniController::class, 'services'])->name('services');
     Route::get('/dni/{number}', [DniController::class, 'getDni'])->name('consulta-dni');
     Route::get('/dnimultiple', [DniController::class, 'dniMultiple'])->name('dni-multiple');
+    Route::get('/dnimultiple/{number}', [DniController::class, 'getDniMultiple'])->name('consulta-dni-multiple');
 
 
     /*Consultas Ruc*/

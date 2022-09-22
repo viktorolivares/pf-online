@@ -32,7 +32,7 @@
                             </button>
                         </div>
                         <div class="table-responsive-md">
-                            <table class="table table-bordered table-hover table-sm table-condensed" id="table-dni">
+                            <table class="table table-bordered table-hover table-condensed" id="table-dni">
                                 <thead class="thead-light">
                                     <tr>
                                         <th>DNI</th>
@@ -66,7 +66,7 @@
 
 @push('scripts')
 
-<script src="js/jquery.table2excel.min.js"></script>
+<script src="{{ asset('js/jquery.table2excel.min.js')}}"></script>
 <script src="{{ asset('js/scripts/dnimultiple.js')}}"></script>
 
 @endpush

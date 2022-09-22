@@ -20,42 +20,45 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="{{ asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
 
+
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
     <!-- Template -->
     <link href="{{ asset('css/sb-admin-2.css') }}" rel="stylesheet">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     @stack('styles')
 
 </head>
 
-<body>
-    <div id="app">
-        <div class="loading">
-            <span class="loader"></span>
-        </div>
-        <div id="wrapper">
-            @include('layouts.sidebar')
-            <div id="content-wrapper" class="d-flex flex-column">
-                <div id="content">
-                    @include('layouts.topbar')
-                    <div class="container-fluid">
-                        @yield('content')
-                    </div>
+<body id="page-top">
+    <div class="loading">
+        <span class="loader"></span>
+    </div>
+    <div id="wrapper">
+        @include('layouts.sidebar')
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+                @include('layouts.topbar')
+                <div class="container-fluid" id="app">
+                    @yield('content')
                 </div>
-                @include('layouts.footer')
             </div>
+            @include('layouts.footer')
         </div>
     </div>
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
 
     <script src="{{ asset('vendor/jquery/jquery.min.js') }} "></script>
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
     <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 
-    <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
+    <script src="{{ asset('js/sb-admin-2.js') }}"></script>
     <script src="{{ asset('js/notify.min.js') }}"></script>
 
     <script>

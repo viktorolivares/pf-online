@@ -20,4 +20,5 @@ class RucController extends Controller
             'ruc' => $data,
         ]);
     }
+
 }
