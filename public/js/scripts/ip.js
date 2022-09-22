@@ -33,7 +33,7 @@ jQuery(function ($) {
 
         if (ip_all) {
             if (ip.length <= 20) {
-                for (var i = 0, j = 0, k = 0; i < ip.length; i++) {
+                for (var i = 0, j = 0, k = 1, l = 1; i < ip.length; i++) {
                     $("#msg-span").text("Consultando...");
 
                     $.ajax({
@@ -82,34 +82,34 @@ jQuery(function ($) {
 
                                 $("#body").append(table);
                             } else {
-                                response = data.data.original.country;
 
-                                var country = $.getJSON(
-                                    "js/flag.json",
-                                    function (data) {
-                                        console.log("success");
-                                        var image;
-                                        $.each(data, function (key, val) {
-                                            if (val.code == response) {
-                                                image = val.image;
-                                                console.log(image);
-                                                return false;
-                                            }
-                                        });
-                                    }
-                                ).done(function () {
-                                    console.log("second success");
-                                });
+                                country = data.data.original.country;
 
-                                console.log(country);
+                                function getData(response) {
+                                    $.getJSON(
+                                        "js/flag.json",
+                                        function (data, status) {
+                                            $.each(
+                                                data,
+                                                function (index, value) {
+                                                    if (
+                                                        value.code == response
+                                                    ) {
+                                                        $("#c"+(l++))
+                                                            .html('<img src="' + value.image + '" width="20"/>');
+                                                    }
+                                                }
+                                            );
+                                        }
+                                    );
+                                }
 
                                 (table += "<tr>"),
                                     (table += "<td>" + data.ip + "</td>"),
                                     (table +=
                                         '<td id="c' +
-                                        k++ +
+                                        (k++) +
                                         '">' +
-                                        country +
                                         "</td>"),
                                     (table +=
                                         "<td>" +
@@ -155,7 +155,9 @@ jQuery(function ($) {
                                         "<td>" +
                                         data.data.original.org +
                                         "</td>"),
-                                    (table += "</tr>");
+                                (table += "</tr>");
+
+                                getData(country);
 
                                 $("#body").append(table);
                             }
