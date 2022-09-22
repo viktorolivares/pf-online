@@ -32,6 +32,7 @@ jQuery(function ($) {
         if (dni_all) {
             if (dni.length <= 1000) {
                 for (var i = 0, j = 0; i < dni.length; i++) {
+
                     $("#msg-span").text("Consultando...");
 
                     $.ajax({

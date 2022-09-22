@@ -96,7 +96,7 @@ jQuery(function ($) {
                                                         value.code == response
                                                     ) {
                                                         $("#c"+(l++))
-                                                            .html('<img src="' + value.image + '" width="20"/>');
+                                                            .html('<img src="' + value.image + '" width="25"/>');
                                                     }
                                                 }
                                             );
