@@ -20,8 +20,12 @@ jQuery(function ($) {
         $("#msg-span").removeClass("success-bg").addClass("primary-bg");
 
         $("#body").empty();
-        const ip = $("#ip").val().split(/\n/);
-        const btn = $(this);
+
+        var ip = $("#ip").val().split(/\n/);
+
+        ip = ip.filter(Boolean);
+
+        var btn = $(this);
 
         btn.prop("disabled", true);
 
@@ -29,7 +33,7 @@ jQuery(function ($) {
             btn.prop("disabled", false);
         }, 5000);
 
-        const ip_all = document.getElementById("ip").value;
+        var ip_all = document.getElementById("ip").value;
 
         if (ip_all) {
             if (ip.length <= 20) {
@@ -255,7 +259,7 @@ jQuery(function ($) {
 
         L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
             maxZoom: 18,
-            minZoom: 0,
+            minZoom: 2,
             attribution: "© OpenStreetMap",
         }).addTo(map);
 

@@ -18,7 +18,13 @@ jQuery(function ($) {
 
         $("#msg-span").removeClass("success-bg").addClass("primary-bg");
 
+
+        console.log($("#dni").val());
+
         var dni = $("#dni").val().split(/\n/);
+
+        dni = dni.filter(Boolean);
+
         var btn = $(this);
 
         btn.prop("disabled", true);
