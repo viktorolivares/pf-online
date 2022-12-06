@@ -31,7 +31,6 @@ class DniController extends Controller
 
     public function getDni($dni)
     {
-
         sleep(2);
 
         $sunat = Sunat::search($dni);

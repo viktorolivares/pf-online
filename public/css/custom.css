@@ -50,13 +50,18 @@ hr .divider {
 }
 
 #msg-span {
+    color: #203aaa;
+    font-size: 12px;
+}
+
+#alert-span {
     display: block;
-    padding: 10px 15px;
-    color: whitesmoke;
-    border-radius: 5px;
     width: 100%;
-    margin-bottom: 25px;
+    padding: 10px 15px;
+    color: #ffffff;
     font-size: 14px;
+    margin-bottom: 20px;
+    border-radius: 5px;
 }
 
 .primary-bg {
@@ -91,4 +96,25 @@ hr .divider {
 #map {
     height: 350px;
     width: 100%;
+}
+
+.paging-nav {
+    text-align: right;
+    padding-top: 2px;
+}
+
+.paging-nav a {
+
+    margin: auto 1px;
+    text-decoration: none;
+    display: inline-block;
+    padding: 1px 7px;
+    background: #91b9e6;
+    color: white;
+    border-radius: 3px;
+}
+
+.paging-nav .selected-page {
+    background: #187ed5;
+    font-weight: bold;
 }

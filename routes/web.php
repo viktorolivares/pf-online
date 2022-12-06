@@ -5,7 +5,9 @@ use App\Http\Controllers\IpController;
 use App\Http\Controllers\DniController;
 use App\Http\Controllers\RucController;
 use App\Http\Controllers\OddsController;
+use App\Http\Controllers\DomainController;
 use App\Http\Controllers\DashboardController;
+
 
 
 /*
@@ -48,4 +50,11 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/ip', [IpController::class, 'ip'])->name('ip');
     Route::get('/ip-consult/{ip}', [IpController::class, 'ipConsult'])->name('ip-consult');
+
+
+    /*Domain*/
+
+    Route::get('/domain', [DomainController::class, 'domain'])->name('domain');
+    Route::get('/domain-consult/{domain}', [DomainController::class, 'getDomain'])->name('domain-consult');
+
 });

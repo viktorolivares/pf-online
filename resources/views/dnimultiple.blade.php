@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="row">
-    <div class="col-md-4 mb-4">
+    <div class="col-md-3 mb-2">
         <div class="card">
             <div class="card-body">
                 <div class="card-title text-primary">Máximo 1,000 Consultas</div>
@@ -13,26 +13,29 @@
                     </div>
                     <div class="form-group">
                         <button class="btn btn-primary btn-block" type="submit" id="btn-dni">Apply</button>
-                        <button class="btn btn-outline-secondary btn-block" type="reset" id="btn-ip">Reset</button>
+                        <button class="btn btn-outline-secondary btn-block" type="reset">Reset</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-9">
         <div class="row">
-            <div class="col-md-12 mb-3" id="card-table">
+            <div class="col-md-12 mb-1" id="card-table">
                 <div class="card">
-                    <div class="card-body mb-2">
+                    <div class="card-body mb-1">
                         <div class="my-2">
-                            <span id="msg-span" class="primary-bg">Consultar Dni </span>
-                            <button class="btn btn-success btn-sm" id="btn-excel">
+                            <span id="msg-span">
+                                <i class="fa fa-info-circle"></i>
+                                El origen de datos depende del padrón reducido SUNAT y otras fuentes públicas consultadas en tiempo real.
+                            </span>
+                            <button class="btn btn-success btn-sm float-end" id="btn-excel" style="display: none">
                                 <i class="fa fa-file-excel"></i> &nbsp;
                                 Exportar Excel
                             </button>
                         </div>
                         <div class="table-responsive-md">
-                            <table class="table table-bordered table-hover table-condensed" id="table-dni">
+                            <table class="table table-bordered table-hover table-condensed" id="table-dni" style="display: none">
                                 <thead class="thead-light">
                                     <tr>
                                         <th>DNI</th>
@@ -49,10 +52,10 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-12" id="progress">
+            <div class="col-md-12" id="progress" style="display: none">
                 <div class="card">
                     <div class="card-body">
-                        <div class="progress my-4">
+                        <div class="progress my-1">
                             <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
                                 aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>

@@ -12,13 +12,13 @@
                     </div>
                     <div class="form-group">
                         <button class="btn btn-primary btn-block" type="submit" id="btn-ruc">Apply</button>
-                        <button class="btn btn-outline-secondary btn-block" type="reset" id="btn-ip">Reset</button>
+                        <button class="btn btn-outline-secondary btn-block" type="reset">Reset</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-    <div class="col-md-9" id="card-form">
+    <div class="col-md-9" id="card-form" style="display: none">
         <div class="card">
             <div class="card-body pt-4">
                 <form id="form-result">
@@ -41,11 +41,11 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="estado">Estado</label>
-                            <span id="msg-span" class="bg-secondary estado">-</span>
+                            <span id="alert-span" class="bg-secondary estado">-</span>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="condicion">Condición</label>
-                            <span id="msg-span" class="bg-secondary condicion">-</span>
+                            <span id="alert-span" class="bg-secondary condicion">-</span>
                         </div>
                     </div>
                 </form>

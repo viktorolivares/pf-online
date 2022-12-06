@@ -15,15 +15,15 @@ class IpController extends Controller
     public function ipConsult($ip)
 
     {
+        sleep(3);
 
         $data = Ipconsult::search($ip);
-
-        $data1 = Ip2Location::search($ip);
+        $test = Ip2Location::search($ip);
 
         return response()->json([
             'data' => $data,
             'ip' => $ip,
-            'data1' => $data1,
+            'test' => $test,
         ]);
     }
 }

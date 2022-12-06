@@ -16,8 +16,6 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="{{ asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
 
 
@@ -33,7 +31,7 @@
 
 </head>
 
-<body id="page-top">
+<body id="page-top" >
     <div class="loading">
         <span class="loader"></span>
     </div>
@@ -54,12 +52,14 @@
     </a>
 
     <script src="{{ asset('vendor/jquery/jquery.min.js') }} "></script>
+    <script src="{{ asset('vendor/jquery-ui/jquery-ui.min.js') }} "></script>
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
     <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 
     <script src="{{ asset('js/sb-admin-2.js') }}"></script>
     <script src="{{ asset('js/notify.min.js') }}"></script>
+    <script src="{{ asset('js/paging.js') }}"></script>
 
     <script>
         $.ajaxSetup({

@@ -1,9 +1,7 @@
 jQuery(function ($) {
-    $("#card-form").hide();
 
     $("#btn-ruc").on("click", function (e) {
         e.preventDefault();
-
         resetForm();
 
         $("#alert").hide();
@@ -32,10 +30,10 @@ jQuery(function ($) {
                         if (data.ruc.original.departamento != null) {
                             $("#ubigeo").val(
                                 data.ruc.original.departamento +
-                                    " / " +
-                                    data.ruc.original.provincia +
-                                    " / " +
-                                    data.ruc.original.distrito
+                                " / " +
+                                data.ruc.original.provincia +
+                                " / " +
+                                data.ruc.original.distrito
                             );
                         } else {
                             $("#ubigeo").val("-");

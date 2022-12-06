@@ -26,13 +26,14 @@
             aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">RENIEC</h6>
-                <a class="collapse-item {{ (request()->is('dni')) ? 'active' : '' }}" href="{{route('dni')}}">Individual
+                <a class="collapse-item {{ (request()->is('dni')) ? 'active' : '' }}" href="{{route('dni')}}">
+                    Individual
                 </a>
-                <a class="collapse-item {{ (request()->is('dnimultiple')) ? 'active' : '' }}"
-                    href="{{route('dni-multiple')}}">Masivo
+                <a class="collapse-item {{ (request()->is('dnimultiple')) ? 'active' : '' }}" href="{{route('dni-multiple')}}">
+                    Masivo
                 </a>
-                <a class="collapse-item {{ (request()->is('age')) ? 'active' : '' }}" href="{{route('age')}}">Validar
-                    18+
+                <a class="collapse-item {{ (request()->is('age')) ? 'active' : '' }}" href="{{route('age')}}">
+                    Validar 18+
                 </a>
                 <hr class="sidebar-divider">
                 <h6 class="collapse-header">SUNAT</h6>
@@ -51,8 +52,10 @@
         <div id="collapseTwo" class="collapse {{ (request()->is('services', 'ip')) ? 'show' : '' }}"
             aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Otros</h6>
                 <a class="collapse-item {{ (request()->is('ip')) ? 'active' : '' }}" href="{{route('ip')}}">Verf. IP</a>
+                <a class="collapse-item {{ (request()->is('domain')) ? 'active' : '' }}"
+                    href="{{route('domain')}}">Domain Valid
+                </a>
                 <a class="collapse-item {{ (request()->is('services')) ? 'active' : '' }}"
                     href="{{route('services')}}">Services
                 </a>

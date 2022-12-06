@@ -13,13 +13,13 @@
                     </div>
                     <div class="form-group">
                         <button class="btn btn-primary btn-block" type="submit" id="btn-dni">Apply</button>
-                        <button class="btn btn-outline-secondary btn-block" type="reset" id="btn-ip">Reset</button>
+                        <button class="btn btn-outline-secondary btn-block" type="reset">Reset</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-    <div class="col-md-9" id="card-form">
+    <div class="col-md-9" id="card-form" style="display: none">
         <div class="card">
             <div class="card-body pt-4">
                 <form id="form-result">

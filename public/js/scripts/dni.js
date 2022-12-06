@@ -1,7 +1,5 @@
 jQuery(function ($) {
 
-    $("#card-form").hide();
-
     $("#btn-dni").on("click", function (e) {
 
         e.preventDefault();
